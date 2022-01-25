@@ -43,7 +43,7 @@ router.post('/', async (req, res, next) => {
 // Update - PUT
 router.put('/:id', async (req, res, next) => {
     try {
-        const updatedSetting = await Setting.create.findByIdAndUpdate(
+        const updatedSetting = await Setting.findByIdAndUpdate(
             req.params.id,
             req.body,
             { new: true, overwrite: true }

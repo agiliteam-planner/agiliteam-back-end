@@ -14,22 +14,28 @@ Task.deleteMany({})
     })
     .then((tasks) => {
         console.log('Created tasks', tasks);
-        Setting.deleteMany({});
-    })
-    .then(() => {
-        console.log('Deleted Settings!');
-        return Setting.insertMany(settingSeed);
-    })
-    .then((settings) => {
-        console.log('Created settings', settings);
-        Message.deleteMany({});
-    })
-    .then(() => {
-        console.log('Deleted Messages!');
-        return Message.insertMany(messageSeed);
-    })
-    .then((messages) => {
-        console.log('Created messages', messages);
-    })
+    })  
     .catch(console.error)
     .finally(() => process.exit())
+
+Setting.deleteMany({})
+	.then(() => {
+		console.log('Deleted settings!');
+		return Setting.insertMany(settingSeed);
+    })
+	.then((settings) => {
+		console.log('Created settings', settings);
+	})
+	.catch(console.error)
+	.finally(() => process.exit());
+
+Message.deleteMany({})
+	.then(() => {
+		console.log('Deleted Messages!');
+		return Message.insertMany(messageSeed);
+	})
+	.then((messages) => {
+		console.log('Created Messages', messages);
+	})
+	.catch(console.error)
+	.finally(() => process.exit());
