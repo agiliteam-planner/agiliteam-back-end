@@ -20,7 +20,7 @@ router.get('/:id', async (req, res, next) => {
     try {
         const task = await Task.findById(req.params.id);
         if (task) {
-            res.json(endpoint);
+            res.json(task);
         } else {
             res.sendStatus(404);
         }
@@ -45,7 +45,7 @@ router.put('/:id', async (req, res, next) => {
         const updatedTask = await Task.findByIdAndUpdate(
             req.params.id,
             req.body,
-            { new: true }
+            { new: true, overwrite: true }
             );
         if (updatedTask) {
             res.json(updatedTask);
@@ -63,7 +63,7 @@ router.patch('/:id', async (req, res, next) => {
         const taskToUpdate = await Task.findByIdAndUpdate(
             req.params.id,
             { $set: req.body },
-            { new: true}
+            { new: true }
             );
         if (taskToUpdate) {
             res.json(taskToUpdate);
