@@ -4,12 +4,12 @@ const cors = require('cors');
 
 // Instantiate Express App
 const app = express();
-
+app.set('port', process.env.PORT || 3000);
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors())
-app.set('port', process.env.PORT || 3000);
+
 // Routes
 
 // Redirect
