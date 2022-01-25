@@ -3,19 +3,17 @@
 		"title": "Make wireframes",
 		"description": "Prepare wireframe for each view",
 		"stage": "Todo",
-		"Duedate": "Tue Jan 25 2022 10:12:52 GMT-0500",
+		"dueDate": "Tue Jan 25 2022 10:12:52 GMT-0500",
 		"priority": 2,
 		"owner": "eladsadeh",
 		"checklist": [
-			{ "title": "Main View", "checked": false },
-			{ "title": "Task View", "checked": true },
-			{ "title": "About View", "checked": false }
+			{ "title": "Main View", "checked": false }
 		],
 		"comments": [
 			{
 				"user": "kurt",
 				"content": "lets do it",
-				"time": "Mon Jan 24 2022 9:12:52 GMT-0500",
+				"time": "Mon Jan 24 2022 9:12:52 GMT-0500"
 			}
 		],
 		"files": ["planning.md"]
@@ -24,14 +22,14 @@
 		"title": "Create Task Schema",
 		"description": "Prepare Task Schema based on project proposal definition",
 		"stage": "In Progress",
-		"Duedate": "Tue Jan 25 2022 10:12:52 GMT-0500",
+		"dueDate": "Tue Jan 25 2022 10:12:52 GMT-0500",
 		"priority": 2,
 		"owner": "kurt",
 		"checklist": [null],
 		"comments": [
 			{
 				"user": "kurt",
-				"content": "Almost don",
+				"content": "Almost done",
 				"time": "Tue Jan 25 2022 9:12:52 GMT-0500"
 			}
 		],
@@ -41,12 +39,11 @@
 		"title": "Main view React component",
 		"description": "Build the stages view in React",
 		"stage": "In Progress",
-		"Duedate": "Wed Jan 26 2022 18:00:00 GMT-0500",
+		"dueDate": "Wed Jan 26 2022 18:00:00 GMT-0500",
 		"priority": 2,
 		"owner": "oscar",
 		"checklist": [
-			{ "title": "Render stages", "checked": true },
-			{ "title": "Add tasks to stages", "checked": false }
+			{ "title": "Render stages", "checked": true }
 		],
 		"comments": [
 			{

@@ -1,9 +1,8 @@
 // Imports
 const express = require('express');
-const { route } = requires('express/lib/router');
-const router = express.Router();
+const { route } = require('express/lib/router');
 const Task = require('../db/Models/Task');
-
+const router = express.Router();
 // Routes
 
 // Index - GET
@@ -15,6 +14,7 @@ router.get('/', async (req, res, next) => {
         next(err);
     }
 });
+
 // Show - GET
 router.get('/:id', async (req, res, next) => {
     try {
@@ -28,6 +28,7 @@ router.get('/:id', async (req, res, next) => {
         next(err);
     }
 });
+
 // Create - POST
 router.post('/', async (req, res, next) => {
     try {
@@ -37,6 +38,7 @@ router.post('/', async (req, res, next) => {
         next(err);
     }
 });
+
 // Update - PUT
 router.put('/:id', async (req, res, next) => {
     try {
@@ -54,6 +56,7 @@ router.put('/:id', async (req, res, next) => {
         next(err);
     }
 });
+
 // Update - PATCH
 router.patch('/:id', async (req, res, next) => {
     try {
@@ -71,6 +74,7 @@ router.patch('/:id', async (req, res, next) => {
         next(err);
     }
 });
+
 // Delete - DELETE
 router.delete('/:id', async (req, res, next) => {
     try {
@@ -84,3 +88,5 @@ router.delete('/:id', async (req, res, next) => {
         next(err);
     }
 });
+
+module.exports = router;
