@@ -1,9 +1,8 @@
 // Imports
 const express = require('express');
-const { route } = requires('express/lib/router');
-const router = express.Router();
+const { route } = require('express/lib/router');
 const Task = require('../db/Models/Task');
-
+const router = express.Router();
 // Routes
 
 // Index - GET
@@ -89,3 +88,5 @@ router.delete('/:id', async (req, res, next) => {
         next(err);
     }
 });
+
+module.exports = router;

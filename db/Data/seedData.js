@@ -1,7 +1,7 @@
 // Import Model(s)
 const Task = require('../Models/Task');
 // Import Seed(s)
-const taskSeed = require('./tasks.json');
+const taskSeed = require('../Data/tasks.json');
 
 Task.deleteMany({})
     .then(() => {

@@ -7,7 +7,7 @@ const TaskSchema = new mongoose.Schema (
        title: String,
        description: String,
        stage: String,
-       dueDate: Date,
+       dueDate: String,
        priority: Number,
        owner: String,
        checklist: [
@@ -20,7 +20,7 @@ const TaskSchema = new mongoose.Schema (
             {
                 user: String,
                 content: String,
-                time: Date
+                time: String
             }
        ],
        files: [String]
