@@ -24,7 +24,7 @@ const taskController = require('./Controllers/taskController')
 
 // Redirect Requests
 app.use('/tasks', taskController)
-// app.use('/users', settingController)
+// app.use('/settings', settingController)
 // app.use('/messages', messageController)
 
 // Failure handler
