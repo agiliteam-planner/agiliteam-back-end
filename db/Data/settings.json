@@ -1,0 +1,40 @@
+[
+    {
+        "users": [
+            {
+                "username": "ks42",
+                "firstName": "Kurt",
+                "lastName": "Shields",
+                "image": "some picture"
+            }
+        ],
+        "stages": ["Working on back end"]
+    },
+    {
+        "users": [
+            {
+                "username": "os",
+                "firstName": "Oscar",
+                "lastName": "Sanchez",
+                "image": "this picture"
+            }
+        ],
+        "stages": [
+            "Working on react components",
+            "Working on rebase"
+        ]
+    },
+    {
+        "users": [
+            {
+                "username": "es",
+                "firstName": "Elad",
+                "lastName": "Sadeh",
+                "image": null
+            }
+        ],
+        "stages": [
+            null
+        ]
+    }
+]

@@ -18,14 +18,15 @@ app.get('/', (req, res) =>
 
 // Start Controllers
 const taskController = require('./Controllers/taskController')
-// const settingController = require('./Controllers/settingController')
-// const messageController = require('./Controllers/messageController')
+const settingController = require('./Controllers/settingController')
+const messageController = require('./Controllers/messageController')
+
 // End Controllers
 
 // Redirect Requests
 app.use('/tasks', taskController)
-// app.use('/setting', settingController)
-// app.use('/messages', messageController)
+app.use('/settings', settingController)
+app.use('/messages', messageController)
 
 // Failure handler
 app.use((err, req, res, next) => {
