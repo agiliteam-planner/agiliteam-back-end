@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors())
 
-// Routes
+// Routesgit p
 
 // Redirect
 app.get('/', (req, res) =>
