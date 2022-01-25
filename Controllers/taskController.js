@@ -1,8 +1,8 @@
 // Imports
 const express = require('express');
 const { route } = require('express/lib/router');
-const Task = require('../db/Models/Task');
 const router = express.Router();
+const Task = require('../db/Models/Task');
 // Routes
 
 // Index - GET
