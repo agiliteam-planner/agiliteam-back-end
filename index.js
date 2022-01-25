@@ -17,14 +17,14 @@ app.get('/', (req, res) =>
 {res.redirect('/tasks')});
 
 // Start Controllers
-const taskController = require('./Controllers/taskController.js')
-// const userController = require('./Controllers/userController')
-// const messageController = require('./Controllers/userController')
+const taskController = require('./Controllers/taskController')
+// const settingController = require('./Controllers/settingController')
+// const messageController = require('./Controllers/messageController')
 // End Controllers
 
 // Redirect Requests
 app.use('/tasks', taskController)
-// app.use('/users', userController)
+// app.use('/users', settingController)
 // app.use('/messages', messageController)
 
 // Failure handler
