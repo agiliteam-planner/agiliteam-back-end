@@ -1,6 +1,6 @@
 // Imports
 const express = require('express');
-const { route } = requires('express/lib/router');
+const { route } = require('express/lib/router');
 const router = express.Router();
 const Setting = require('../db/Models/Setting.js');
 
