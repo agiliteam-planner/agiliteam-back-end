@@ -6,12 +6,13 @@
                 "firstName": "Kurt",
                 "lastName": "Shields",
                 "image": "some picture"
-            }
-        ],
-        "stages": ["Working on back end"]
-    },
-    {
-        "users": [
+            },
+            {
+                "username": "es",
+                "firstName": "Elad",
+                "lastName": "Sadeh",
+                "image": null
+            },
             {
                 "username": "os",
                 "firstName": "Oscar",
@@ -19,22 +20,7 @@
                 "image": "this picture"
             }
         ],
-        "stages": [
-            "Working on react components",
-            "Working on rebase"
-        ]
-    },
-    {
-        "users": [
-            {
-                "username": "es",
-                "firstName": "Elad",
-                "lastName": "Sadeh",
-                "image": null
-            }
-        ],
-        "stages": [
-            null
-        ]
+        "stages": ["To Do", "In Progress", "In Review", "Done"],
+        "url": "https://arcane-plateau-58687.herokuapp.com"
     }
 ]

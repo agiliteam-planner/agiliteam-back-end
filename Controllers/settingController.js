@@ -7,7 +7,7 @@ const Setting = require('../db/Models/Setting.js');
 // Routes
 
 // Index - GET
-router.get('/', async (req, res, next) => {
+router.get('/settings', async (req, res, next) => {
     try {
         const settings = await Setting.find({});
         res.json(settings)
@@ -17,7 +17,7 @@ router.get('/', async (req, res, next) => {
 });
 
 // Show - GET
-router.get('/:id', async (req, res, next) => {
+router.get('/settings/:id', async (req, res, next) => {
     try {
         const setting = await Setting.findById(req.params.id);
         if (setting) {
@@ -31,7 +31,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 // Create - POST
-router.post('/', async (req, res, next) => {
+router.post('/settings', async (req, res, next) => {
     try {
         const newSetting = await Setting.create(req.body);
         res.json(newSetting);
@@ -41,7 +41,7 @@ router.post('/', async (req, res, next) => {
 });
 
 // Update - PUT
-router.put('/:id', async (req, res, next) => {
+router.put('/settings/:id', async (req, res, next) => {
     try {
         const updatedSetting = await Setting.findByIdAndUpdate(
             req.params.id,
@@ -59,7 +59,7 @@ router.put('/:id', async (req, res, next) => {
 });
 
 // Update - PATCH
-router.patch('/:id', async (req, res, next) => {
+router.patch('/settings/:id', async (req, res, next) => {
     try {
         const settingToUpdate = await Setting.findByIdAndUpdate(
             req.params.id,
@@ -77,7 +77,7 @@ router.patch('/:id', async (req, res, next) => {
 });
 
 // Delete - DELETE
-router.delete('/:id', async (req, res, enxt) => {
+router.delete('/settings/:id', async (req, res, enxt) => {
     try {
         const deletedSetting = await Setting.findByIdAndDelete(req.params.id);
         if (deletedSetting) {
