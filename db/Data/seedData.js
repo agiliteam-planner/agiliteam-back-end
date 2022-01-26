@@ -2,10 +2,12 @@
 const Task = require('../Models/Task');
 const Setting = require('../Models/Setting');
 const Message = require('../Models/Message');
+const User = require('../Models/User')
 // Import Seed(s)
 const taskSeed = require('../Data/tasks.json');
 const settingSeed = require('../Data/settings.json');
 const messageSeed = require('../Data/mesages.json');
+const userSeed = require('../Data/users.json')
 
 Task.deleteMany({})
     .then(() => {
@@ -36,6 +38,17 @@ Message.deleteMany({})
 	})
 	.then((messages) => {
 		console.log('Created Messages', messages);
+	})
+	.catch(console.error)
+	.finally(() => process.exit());
+
+User.deleteMany({})
+	.then(() => {
+		console.log('Deleted Users!');
+		return User.insertMany(userSeed);
+	})
+	.then((users) => {
+		console.log('Created Users', users);
 	})
 	.catch(console.error)
 	.finally(() => process.exit());

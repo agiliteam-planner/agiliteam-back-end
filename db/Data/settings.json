@@ -1,25 +1,5 @@
 [
     {
-        "users": [
-            {
-                "username": "ks42",
-                "firstName": "Kurt",
-                "lastName": "Shields",
-                "image": "some picture"
-            },
-            {
-                "username": "es",
-                "firstName": "Elad",
-                "lastName": "Sadeh",
-                "image": null
-            },
-            {
-                "username": "os",
-                "firstName": "Oscar",
-                "lastName": "Sanchez",
-                "image": "this picture"
-            }
-        ],
         "stages": ["To Do", "In Progress", "In Review", "Done"],
         "url": "https://arcane-plateau-58687.herokuapp.com"
     }
