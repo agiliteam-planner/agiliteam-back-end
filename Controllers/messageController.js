@@ -7,7 +7,7 @@ const Message = require('../db/Models/Message.js');
 // Routes
 
 // Index - GET
-router.get('/', async (req, res, next) => {
+router.get('/messages', async (req, res, next) => {
 	try {
 		const messages = await Message.find({});
 		res.json(messages);
@@ -17,7 +17,7 @@ router.get('/', async (req, res, next) => {
 });
 
 // Show - GET
-router.get('/:id', async (req, res, next) => {
+router.get('/messages/:id', async (req, res, next) => {
 	try {
 		const message = await Message.findById(req.params.id);
 		if (message) {
@@ -31,7 +31,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 // Create - POST
-router.post('/', async (req, res, next) => {
+router.post('/messages', async (req, res, next) => {
 	try {
 		const newMessage = await Message.create(req.body);
 		res.json(newMessage);
@@ -41,7 +41,7 @@ router.post('/', async (req, res, next) => {
 });
 
 // Update - PUT
-router.put('/:id', async (req, res, next) => {
+router.put('/messages/:id', async (req, res, next) => {
 	try {
 		const updatedMessage = await Message.findByIdAndUpdate(
 			req.params.id,
@@ -59,7 +59,7 @@ router.put('/:id', async (req, res, next) => {
 });
 
 // Update - PATCH
-router.patch('/:id', async (req, res, next) => {
+router.patch('/messages/:id', async (req, res, next) => {
 	try {
 		const messageToUpdate = await Message.findByIdAndUpdate(
 			req.params.id,
@@ -77,7 +77,7 @@ router.patch('/:id', async (req, res, next) => {
 });
 
 // Delete - DELETE
-router.delete('/:id', async (req, res, enxt) => {
+router.delete('/messages/:id', async (req, res, enxt) => {
 	try {
 		const deletedMessage = await Message.findByIdAndDelete(req.params.id);
 		if (deletedMessage) {
