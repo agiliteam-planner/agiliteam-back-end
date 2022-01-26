@@ -33,9 +33,7 @@ router.get('/:id', async (req, res, next) => {
 // Create - POST
 router.post('/', async (req, res, next) => {
     try {
-        const newTask = await Task.create(req.body)
-			.populate('owner')
-			.populate('comments.user');
+        const newTask = await Task.create(req.body);
         const allTasks = await Task.find({})
 			.populate('owner')
 			.populate('comments.user');
@@ -91,9 +89,7 @@ router.patch('/:id', async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
     try {
         const deletedTask = await Task.findByIdAndDelete(req.params.id);
-        const allTasks = await Task.find({})
-			.populate('owner')
-			.populate('comments.user');
+        const allTasks = await Task.find({});
         if (deletedTask) {
             res.json(allTasks);
         } else {
