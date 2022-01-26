@@ -4,7 +4,10 @@ const mongoose = require('../connection');
 // Schema
 const MessageSchema = new mongoose.Schema(
 {
-	user: String,
+	user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
     time: Date,
     content: String,
 }
