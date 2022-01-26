@@ -7,7 +7,7 @@ const User = require('../db/Models/User.js');
 // Routes
 
 // Index - GET
-router.get('/users', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
 	try {
 		const users = await User.find({});
 		res.json(users);
@@ -17,7 +17,7 @@ router.get('/users', async (req, res, next) => {
 });
 
 // Show - GET
-router.get('/users/:id', async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
 	try {
 		const user = await User.findById(req.params.id);
 		if (user) {
@@ -31,7 +31,7 @@ router.get('/users/:id', async (req, res, next) => {
 });
 
 // Create - POST
-router.post('/users', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
 	try {
 		const newUser = await User.create(req.body);
 		res.json(newUser);
@@ -41,7 +41,7 @@ router.post('/users', async (req, res, next) => {
 });
 
 // Update - PUT
-router.put('/users/:id', async (req, res, next) => {
+router.put('/:id', async (req, res, next) => {
 	try {
 		const updatedUser = await User.findByIdAndUpdate(
 			req.params.id,
@@ -59,7 +59,7 @@ router.put('/users/:id', async (req, res, next) => {
 });
 
 // Update - PATCH
-router.patch('/users/:id', async (req, res, next) => {
+router.patch('/:id', async (req, res, next) => {
 	try {
 		const userToUpdate = await User.findByIdAndUpdate(
 			req.params.id,
@@ -77,7 +77,7 @@ router.patch('/users/:id', async (req, res, next) => {
 });
 
 // Delete - DELETE
-router.delete('/users/:id', async (req, res, enxt) => {
+router.delete('/:id', async (req, res, enxt) => {
 	try {
 		const deletedUser = await User.findByIdAndDelete(req.params.id);
 		if (deletedUser) {

@@ -20,7 +20,7 @@ app.get('/', (req, res) =>
 const taskController = require('./Controllers/taskController')
 const settingController = require('./Controllers/settingController')
 const messageController = require('./Controllers/messageController')
-const userController = requires('/Controllers/userController')
+const userController = require('./Controllers/userController')
 // End Controllers
 
 // Redirect Requests
