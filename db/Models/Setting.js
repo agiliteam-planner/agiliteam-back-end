@@ -4,16 +4,9 @@ const mongoose = require('../connection')
 // Schema
 const SettingSchema = new mongoose.Schema (
     {
-        users: [
-            {
-                username: String,
-                firstName: String,
-                lastName: String,
-                image: String,
-            }
-        ],
-        stages: [String]
-    });
+        stages: [String],
+        url: String
+    })
 
 // Instantiate the model
 const Setting = mongoose.model('Setting', SettingSchema);

@@ -19,8 +19,9 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
     try {
         const task = await Task.findById(req.params.id);
+        const allTasks = await Task.find({});
         if (task) {
-            res.json(task);
+            res.json(allTasks);
         } else {
             res.sendStatus(404);
         }
@@ -33,7 +34,8 @@ router.get('/:id', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
     try {
         const newTask = await Task.create(req.body);
-        res.json(newTask);
+        const allTasks = await Task.find({});
+        res.json(allTasks);
     } catch(err) {
         next(err);
     }
@@ -47,8 +49,9 @@ router.put('/:id', async (req, res, next) => {
             req.body,
             { new: true, overwrite: true }
             );
+        const allTasks = await Task.find({});
         if (updatedTask) {
-            res.json(updatedTask);
+            res.json(allTasks);
         } else {
             res.sendStatus(404);
         }
@@ -65,8 +68,9 @@ router.patch('/:id', async (req, res, next) => {
             { $set: req.body },
             { new: true }
             );
+        const allTasks = await Task.find({});
         if (taskToUpdate) {
-            res.json(taskToUpdate);
+            res.json(allTasks);
         } else {
             res.sendStatus(404);
         }
@@ -79,8 +83,9 @@ router.patch('/:id', async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
     try {
         const deletedTask = await Task.findByIdAndDelete(req.params.id);
+        const allTasks = await Task.find({})
         if (deletedTask) {
-            res.json(deletedTask);
+            res.json(allTasks);
         } else {
             res.sendStatus(404);
         }

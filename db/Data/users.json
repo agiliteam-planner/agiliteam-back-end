@@ -1,0 +1,20 @@
+[
+    {
+		"username": "ks42",
+		"firstName": "Kurt",
+		"lastName": "Shields",
+		"image": "best image location"
+	},
+    {
+		"username": "es",
+		"firstName": "Elad",
+		"lastName": "Sadeh",
+		"image": null
+	},
+    {
+		"username": "os",
+		"firstName": "Oscar",
+		"lastName": "Sanchez",
+		"image": "giphy.gif"
+	}
+]
