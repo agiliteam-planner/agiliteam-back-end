@@ -8,8 +8,8 @@ const Task = require('../db/Models/Task');
 // Index - GET
 router.get('/', async (req, res, next) => {
     try {
-        const task = await Task.find({})
-        res.json(task);
+        const task = await Task.find({}).populate('owner').populate('comments.user')
+        res.json(task)
     } catch(err) {
         next(err);
     }
@@ -18,7 +18,7 @@ router.get('/', async (req, res, next) => {
 // Show - GET
 router.get('/:id', async (req, res, next) => {
     try {
-        const task = await Task.findById(req.params.id);
+        const task = await Task.findById(req.params.id).populate('owner').populate('comments.user');
         const allTasks = await Task.find({});
         if (task) {
             res.json(allTasks);
@@ -33,8 +33,12 @@ router.get('/:id', async (req, res, next) => {
 // Create - POST
 router.post('/', async (req, res, next) => {
     try {
-        const newTask = await Task.create(req.body);
-        const allTasks = await Task.find({});
+        const newTask = await Task.create(req.body)
+			.populate('owner')
+			.populate('comments.user');
+        const allTasks = await Task.find({})
+			.populate('owner')
+			.populate('comments.user');
         res.json(allTasks);
     } catch(err) {
         next(err);
@@ -45,11 +49,13 @@ router.post('/', async (req, res, next) => {
 router.put('/:id', async (req, res, next) => {
     try {
         const updatedTask = await Task.findByIdAndUpdate(
-            req.params.id,
-            req.body,
-            { new: true, overwrite: true }
-            );
-        const allTasks = await Task.find({});
+			req.params.id,
+			req.body,
+			{ new: true, overwrite: true }
+		);
+        const allTasks = await Task.find({})
+			.populate('owner')
+			.populate('comments.user');
         if (updatedTask) {
             res.json(allTasks);
         } else {
@@ -64,11 +70,13 @@ router.put('/:id', async (req, res, next) => {
 router.patch('/:id', async (req, res, next) => {
     try {
         const taskToUpdate = await Task.findByIdAndUpdate(
-            req.params.id,
-            { $set: req.body },
-            { new: true }
-            );
-        const allTasks = await Task.find({});
+			req.params.id,
+			{ $set: req.body },
+			{ new: true }
+		);
+        const allTasks = await Task.find({})
+			.populate('owner')
+			.populate('comments.user');
         if (taskToUpdate) {
             res.json(allTasks);
         } else {
@@ -84,6 +92,8 @@ router.delete('/:id', async (req, res, next) => {
     try {
         const deletedTask = await Task.findByIdAndDelete(req.params.id);
         const allTasks = await Task.find({})
+			.populate('owner')
+			.populate('comments.user');
         if (deletedTask) {
             res.json(allTasks);
         } else {

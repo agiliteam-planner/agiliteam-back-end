@@ -9,7 +9,7 @@ const Message = require('../db/Models/Message.js');
 // Index - GET
 router.get('/', async (req, res, next) => {
 	try {
-		const messages = await Message.find({});
+		const messages = await Message.find({}).populate('user');
 		res.json(messages);
 	} catch (err) {
 		next(err);
@@ -19,7 +19,7 @@ router.get('/', async (req, res, next) => {
 // Show - GET
 router.get('/:id', async (req, res, next) => {
 	try {
-		const message = await Message.findById(req.params.id);
+		const message = await Message.findById(req.params.id).populate('user');
 		if (message) {
 			res.json(message);
 		} else {
@@ -33,7 +33,7 @@ router.get('/:id', async (req, res, next) => {
 // Create - POST
 router.post('/', async (req, res, next) => {
 	try {
-		const newMessage = await Message.create(req.body);
+		const newMessage = await Message.create(req.body).populate('user');
 		res.json(newMessage);
 	} catch (err) {
 		next(err);
@@ -47,7 +47,7 @@ router.put('/:id', async (req, res, next) => {
 			req.params.id,
 			req.body,
 			{ new: true, overwrite: true }
-		);
+		).populate('user');
 		if (updatedMessage) {
 			res.json(updatedMessage);
 		} else {
@@ -65,7 +65,7 @@ router.patch('/:id', async (req, res, next) => {
 			req.params.id,
 			{ $set: req.body },
 			{ new: true }
-		);
+		).populate('user');
 		if (messageToUpdate) {
 			res.json(messageToUpdate);
 		} else {
@@ -79,7 +79,9 @@ router.patch('/:id', async (req, res, next) => {
 // Delete - DELETE
 router.delete('/:id', async (req, res, enxt) => {
 	try {
-		const deletedMessage = await Message.findByIdAndDelete(req.params.id);
+		const deletedMessage = await Message.findByIdAndDelete(
+			req.params.id
+		).populate('user');
 		if (deletedMessage) {
 			res.json(deletedMessage);
 		} else {
