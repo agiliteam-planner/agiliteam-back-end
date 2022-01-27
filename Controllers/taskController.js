@@ -19,7 +19,6 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
     try {
         const task = await Task.findById(req.params.id).populate('owner').populate('comments.user');
-        const allTasks = await Task.find({}).populate('owner').populate('comments.user');
         if (task) {
             res.json(task);
         } else {
