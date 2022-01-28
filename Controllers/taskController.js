@@ -1,6 +1,7 @@
 // Imports
 const express = require('express');
 const { route } = require('express/lib/router');
+const { Mongoose } = require('mongoose');
 const router = express.Router();
 const Task = require('../db/Models/Task');
 // Routes
@@ -18,14 +19,17 @@ router.get('/', async (req, res, next) => {
 // Show - GET
 router.get('/:id', async (req, res, next) => {
     try {
-        const task = await Task.findById(req.params.id).populate('owner').populate('comments.user');
-        if (task) {
-            res.json(task);
-        } else {
-            res.sendStatus(404);
-        }
-    } catch(err) {
-        next(err);
+        if (req.params.id.length === 24) {
+            const task = await Task.findById(req.params.id).populate('owner').populate('comments.user'); 
+                if (task) {
+                    res.json(task);
+                } else {
+                    res.json('The ID cannot be found')
+                }} else {
+                    res.json('The ID cannot be found')
+                }
+        } catch(err) {
+            next(err);
     }
 });
 
