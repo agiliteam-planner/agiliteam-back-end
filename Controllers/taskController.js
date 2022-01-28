@@ -24,9 +24,9 @@ router.get('/:id', async (req, res, next) => {
                 if (task) {
                     res.json(task);
                 } else {
-                    res.json('The ID cannot be found')
+                    res.sendStatus(404)
                 }} else {
-                    res.json('The ID cannot be found')
+                    res.sendStatus(404)
                 }
         } catch(err) {
             next(err);
