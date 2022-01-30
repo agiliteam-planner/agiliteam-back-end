@@ -12,6 +12,7 @@ router.get('/', async (req, res, next) => {
         const settings = await Setting.find({});
         res.json(settings)
     } catch(err) {
+        console.log(err);
         next(err);
     }
 });
