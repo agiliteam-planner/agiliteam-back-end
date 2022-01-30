@@ -8,99 +8,103 @@ const Task = require('../db/Models/Task');
 
 // Index - GET
 router.get('/', async (req, res, next) => {
-    try {
-        const task = await Task.find({}).populate('owner').populate('comments.user')
-        res.json(task)
-    } catch(err) {
-        next(err);
-    }
+	try {
+		const task = await Task.find({})
+			.populate('owner')
+			.populate('comments.user');
+		res.json(task);
+	} catch (err) {
+		next(err);
+	}
 });
 
 // Show - GET
 router.get('/:id', async (req, res, next) => {
-    try {
-        if (req.params.id.length === 24) {
-            const task = await Task.findById(req.params.id).populate('owner').populate('comments.user'); 
-                if (task) {
-                    res.json(task);
-                } else {
-                    res.sendStatus(404)
-                }} else {
-                    res.sendStatus(404)
-                }
-        } catch(err) {
-            next(err);
-    }
+	try {
+		const task = await Task.findById(req.params.id)
+			.populate('owner')
+			.populate('comments.user');
+		if (task) {
+			res.json(task);
+		} else {
+			res.sendStatus(404);
+		}
+	} catch (err) {
+		if (err.kind === 'ObjectId') {
+			res.status(404).json({ value: err.value, kind: 'Task ID not found' });
+		}
+		// console.log('Error:',err);
+		next(err);
+	}
 });
 
 // Create - POST
 router.post('/', async (req, res, next) => {
-    try {
-        const newTask = await Task.create(req.body);
-        const allTasks = await Task.find({})
+	try {
+		const newTask = await Task.create(req.body);
+		const allTasks = await Task.find({})
 			.populate('owner')
 			.populate('comments.user');
-        res.json(allTasks);
-    } catch(err) {
-        next(err);
-    }
+		res.json(allTasks);
+	} catch (err) {
+		next(err);
+	}
 });
 
 // Update - PUT
 router.put('/:id', async (req, res, next) => {
-    try {
-        const updatedTask = await Task.findByIdAndUpdate(
-			req.params.id,
-			req.body,
-			{ new: true, overwrite: true }
-		);
-        const allTasks = await Task.find({})
+	try {
+		const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body, {
+			new: true,
+			overwrite: true,
+		});
+		const allTasks = await Task.find({})
 			.populate('owner')
 			.populate('comments.user');
-        if (updatedTask) {
-            res.json(allTasks);
-        } else {
-            res.sendStatus(404);
-        }
-    } catch(err) {
-        next(err);
-    }
+		if (updatedTask) {
+			res.json(allTasks);
+		} else {
+			res.sendStatus(404);
+		}
+	} catch (err) {
+		next(err);
+	}
 });
 
 // Update - PATCH
 router.patch('/:id', async (req, res, next) => {
-    try {
-        const taskToUpdate = await Task.findByIdAndUpdate(
+	try {
+		const taskToUpdate = await Task.findByIdAndUpdate(
 			req.params.id,
 			{ $set: req.body },
 			{ new: true }
 		);
-        const allTasks = await Task.find({})
+		const allTasks = await Task.find({})
 			.populate('owner')
 			.populate('comments.user');
-        if (taskToUpdate) {
-            res.json(allTasks);
-        } else {
-            res.sendStatus(404);
-        }
-    } catch(err) {
-        next(err);
-    }
+		if (taskToUpdate) {
+			res.json(allTasks);
+		} else {
+			res.sendStatus(404);
+		}
+	} catch (err) {
+		next(err);
+	}
 });
 
 // Delete - DELETE
 router.delete('/:id', async (req, res, next) => {
-    try {
-        const deletedTask = await Task.findByIdAndDelete(req.params.id);
-        const allTasks = await Task.find({});
-        if (deletedTask) {
-            res.json(allTasks);
-        } else {
-            res.sendStatus(404);
-        }
-    } catch(err) {
-        next(err);
-    }
+	try {
+		const deletedTask = await Task.findByIdAndDelete(req.params.id);
+		const allTasks = await Task.find({});
+		if (deletedTask) {
+			res.json(allTasks);
+		} else {
+			res.sendStatus(404);
+		}
+	} catch (err) {
+		next(err);
+	}
 });
 
 // Export

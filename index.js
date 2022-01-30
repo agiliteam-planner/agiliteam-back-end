@@ -4,7 +4,7 @@ const cors = require('cors');
 
 // Instantiate Express App
 const app = express();
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3111);
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
