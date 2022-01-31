@@ -8,8 +8,9 @@ const User = require('../db/Models/User.js');
 
 // Index - GET
 router.get('/', async (req, res, next) => {
+	console.log(req.query);
 	try {
-		const users = await User.find({});
+		const users = await User.find(req.query);
 		res.json(users);
 	} catch (err) {
 		next(err);
