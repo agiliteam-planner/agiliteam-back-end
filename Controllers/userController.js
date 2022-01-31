@@ -9,7 +9,7 @@ const User = require('../db/Models/User.js');
 // Index - GET
 router.get('/', async (req, res, next) => {
 	try {
-		const users = await User.find({});
+		const users = await User.find(req.query);
 		res.json(users);
 	} catch (err) {
 		next(err);
@@ -34,7 +34,7 @@ router.get('/:id', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
 	try {
 		const newUser = await User.create(req.body);
-		const allUsers = await User.find({})
+		const allUsers = await User.find({});
 		res.json(allUsers);
 	} catch (err) {
 		next(err);
@@ -44,11 +44,10 @@ router.post('/', async (req, res, next) => {
 // Update - PUT
 router.put('/:id', async (req, res, next) => {
 	try {
-		const updatedUser = await User.findByIdAndUpdate(
-			req.params.id,
-			req.body,
-			{ new: true, overwrite: true }
-		);
+		const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
+			new: true,
+			overwrite: true,
+		});
 		if (updatedUser) {
 			res.json(updatedUser);
 		} else {
